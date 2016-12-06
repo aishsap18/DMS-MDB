@@ -2,7 +2,7 @@
 	include("../include/config.php");
    	session_start();
 
-   	$user = $_SESSION['user_id'];
+   	$user = $_SESSION['admin_id'];
 
       $event_id = $_SESSION['event_id'];
       
@@ -11,7 +11,7 @@
       
       $dmid = "";
       while($row = mysqli_fetch_assoc($retval2)) {
-         if ($row['user_id']==$user && $row['event_id']==$event_id) {
+         if ($row['admin_id']==$user && $row['event_id']==$event_id) {
             $dmid = $row['dm_id'];
             //echo $dmid." found";
             break;      

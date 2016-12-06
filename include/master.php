@@ -76,6 +76,7 @@
 
             <li><a href="../admin/list_events.php">List Events</a></li>
             <li><a href="../admin/list_users.php">List Users</a></li>
+            <li><a href="../admin/admin_assign_event.php">Assign Events</a></li>
         </ul>
     </nav>
 </div>

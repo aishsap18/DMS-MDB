@@ -16,14 +16,14 @@ include("../include/master.php");
     <form action="assign_event_action.php" method="post">
 <div class="col-xs-3">
 
-    Select Users
+    <label>Select User</label>
     <?php
 
     $sql = "SELECT * FROM dms_users";
     $result = mysqli_query($db,$sql);
 
     ?>
-    <select class="selectpicker form-control" title="Choose User" name="user_select">
+    <select class="selectpicker form-control" title="Choose User" data-size="6" name="user_select">
         <?php
         while($row = mysqli_fetch_assoc($result)){
             echo "<option>".$row['fullname']."</option>";
@@ -34,14 +34,14 @@ include("../include/master.php");
 
     <div class="col-xs-3">
 
-        Select Event
+        <label>Select Event</label>
         <?php
 
         $sql = "SELECT * FROM dms_event";
         $result = mysqli_query($db,$sql);
 
         ?>
-        <select class="selectpicker form-control" title="Choose Event" name="event_select">
+        <select class="selectpicker form-control" title="Choose Event" data-size="6" name="event_select">
             <?php
             while($row = mysqli_fetch_assoc($result)){
                 echo "<option>".$row['eventname']."</option>";

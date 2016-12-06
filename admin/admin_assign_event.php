@@ -8,27 +8,52 @@ if (isset($_SESSION['admin_id'])) {
 else{
     header("location: ../index.html");
 }
-if (isset($_POST['action'])) {
 
-    $eventname = mysqli_real_escape_string($db,$_POST['submit']);
-    //echo $eventname;
-
-    $sql = "SELECT event_id FROM dms_event WHERE eventname='$eventname'";
-    $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-    $_SESSION['event_id'] = $row['event_id'];
-    $event_id = $_SESSION['event_id'];
-}
 include("../include/master.php");
 ?>
 
 <div class="row">
+    <form action="assign_event_action.php" method="post">
 <div class="col-xs-3">
-<select class="selectpicker form-control">
-    <option>Mustard</option>
-    <option>Ketchup</option>
-    <option>Relish</option>
-</select>
+
+    Select Users
+    <?php
+
+    $sql = "SELECT * FROM dms_users";
+    $result = mysqli_query($db,$sql);
+
+    ?>
+    <select class="selectpicker form-control" title="Choose User" name="user_select">
+        <?php
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<option>".$row['fullname']."</option>";
+        }
+        ?>
+    </select>
 </div>
+
+    <div class="col-xs-3">
+
+        Select Event
+        <?php
+
+        $sql = "SELECT * FROM dms_event";
+        $result = mysqli_query($db,$sql);
+
+        ?>
+        <select class="selectpicker form-control" title="Choose Event" name="event_select">
+            <?php
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<option>".$row['eventname']."</option>";
+            }
+            ?>
+        </select>
+    </div>
+
+    <div class="col-xs-2">
+
+            <input type="submit" class="btn" id="sample_button" value="Assign">
+
+    </div>
+    </form>
 </div>
